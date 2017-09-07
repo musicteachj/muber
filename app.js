@@ -5,7 +5,9 @@ const routes = require('./routes/routes');
 const app = express();
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/muber');
+if (process.env.NODE_EVN !== 'test') {
+	mongoose.connect('mongodb://localhost/muber');
+}
 
 // MUST BE ABOVE ROUTES(APP)
 app.use(bodyParser.json());
